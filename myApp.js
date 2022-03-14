@@ -17,7 +17,9 @@ app.use(helmet.noSniff());
 // X-Download-Options noopen
 app.use(helmet.ieNoOpen());
 
-
+// Force all content to use HTTPS
+let nintyDaysInSecs = 90 * 24 * 60 * 60
+app.use(helmet.hsts({ maxAge: nintyDaysInSecs, force: true }));
 
 
 
