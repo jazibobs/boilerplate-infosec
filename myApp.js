@@ -11,10 +11,11 @@ app.use(helmet.frameguard({action: 'deny'}));
 // Basic XSS protection
 app.use(helmet.xssFilter());
 
-// Stop MIME sniffinf
+// Stop MIME sniff
 app.use(helmet.noSniff());
 
-
+// X-Download-Options noopen
+app.use(helmet.ieNoOpen());
 
 
 
