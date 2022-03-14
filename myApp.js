@@ -24,6 +24,8 @@ app.use(helmet.hsts({ maxAge: nintyDaysInSecs, force: true }));
 // Disable DNS pre-fetch
 app.use(helmet.dnsPrefetchControl());
 
+// Disable browser caching
+app.use(helmet.noCache());
 
 
 
