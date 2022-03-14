@@ -8,6 +8,8 @@ app.use(helmet.hidePoweredBy());
 // Disable iframe usage
 app.use(helmet.frameguard({action: 'deny'}));
 
+// Basic XSS protection
+app.use(helmet.xssFilter());
 
 
 
