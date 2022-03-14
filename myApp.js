@@ -11,6 +11,9 @@ app.use(helmet.frameguard({action: 'deny'}));
 // Basic XSS protection
 app.use(helmet.xssFilter());
 
+// Stop MIME sniffinf
+app.use(helmet.noSniff());
+
 
 
 
