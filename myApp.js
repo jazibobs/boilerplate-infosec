@@ -27,8 +27,11 @@ app.use(helmet.dnsPrefetchControl());
 // Disable browser caching
 app.use(helmet.noCache());
 
-
-
+// Set up Content Security Policy (CSP)
+app.use(helmet.contentSecurityPolicy({
+  defaultSrc: ["'self'"],
+  scriptSrc: ["'self'", "trusted-cdn.com"]
+}))
 
 
 
