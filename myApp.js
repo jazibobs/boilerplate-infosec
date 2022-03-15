@@ -1,5 +1,6 @@
 const express = require('express');
 const helmet = require('helmet');
+const bcrypt = require('bcrypt');
 const app = express();
 
 // Replace all Helmet middleware calls with helmet()
@@ -19,41 +20,6 @@ app.use(
     dnsPrefetchControl: false, // disable
   })
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 module.exports = app;
 const api = require('./server.js');
