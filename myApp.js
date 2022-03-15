@@ -2,38 +2,23 @@ const express = require('express');
 const helmet = require('helmet');
 const app = express();
 
-// Hide express headers
-app.use(helmet.hidePoweredBy());
-
-// Disable iframe usage
-app.use(helmet.frameguard({action: 'deny'}));
-
-// Basic XSS protection
-app.use(helmet.xssFilter());
-
-// Stop MIME sniff
-app.use(helmet.noSniff());
-
-// X-Download-Options noopen
-app.use(helmet.ieNoOpen());
-
-// Force all content to use HTTPS
-let nintyDaysInSecs = 90 * 24 * 60 * 60
-app.use(helmet.hsts({ maxAge: nintyDaysInSecs, force: true }));
-
-// Disable DNS pre-fetch
-app.use(helmet.dnsPrefetchControl());
-
-// Disable browser caching
-app.use(helmet.noCache());
-
-// Set up Content Security Policy (CSP)
-app.use(helmet.contentSecurityPolicy({ 
-  directives: {
-    defaultSrc: ["'self'"],
-    scriptSrc: ["'self'", "trusted-cdn.com"]
-  }
-}))
+// Replace all Helmet middleware calls with helmet()
+app.use(
+  helmet({
+    frameguard: {
+      // configure
+      action: "deny",
+    },
+    contentSecurityPolicy: {
+      // enable and configure
+      directives: {
+        defaultSrc: ["'self'"],
+        styleSrc: ["style.com"],
+      },
+    },
+    dnsPrefetchControl: false, // disable
+  })
+);
 
 
 
